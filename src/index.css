@@ -1,6 +1,5 @@
 :root {
-  --text-shadow-color: #ff9c99;
-  --text-main-color: #d74742;
+  --text-main-color: white;
 }
 * {
   box-sizing: border-box;
@@ -15,6 +14,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("/public/counter_background.gif");
+  background-size: cover;
 }
 
 code {
@@ -24,7 +25,7 @@ code {
 
 h1 {
   color: var(--text-main-color);
-  font-family: "Rouge Script", cursive;
+  font-family: "Fira Sans";
   font-size: 130px;
   font-weight: normal;
   line-height: 48px;
@@ -36,7 +37,7 @@ h1 {
 p {
   color: #ffffff;
   font-family: "Carme", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .container {
@@ -48,14 +49,10 @@ p {
   justify-content: center;
   align-items: center;
 }
-.timer__wrapper {
-  border-radius: 24px;
-  background-color: var(--text-shadow-color);
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
-}
+
 .timer__display {
   padding-left: 1.5em;
+  justify-self: center;
 }
 .timer__display > p {
   font-size: 5em;
@@ -63,34 +60,56 @@ p {
 
 .button__wrapper {
   display: flex;
+  flex-wrap: wrap;
   width: 30vw;
   padding: 1em;
   justify-content: space-evenly;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.534);
+  border-radius: 6px;
 }
+
 .button {
   color: white;
-  background-color: var(--text-shadow-color);
-  font-size: 1.5em;
-  border-radius: 100vh;
-  border: 1px solid white;
+  background-color: transparent;
+  font-size: 1.8em;
   padding: 1em;
   transition: ease-in-out 0.3s;
+  border: none;
+  outline: none; /* Removes focus outline */
+  cursor: pointer;
+  position: relative;
 }
-.button:active {
-  border: 1px solid var(--text-main-color);
-  background-color: var(--text-main-color);
+
+.button:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -7%;
+  top: 25%; /* Adjusts the line height */
+  height: 50%; /* Controls the length of the line */
+  width: 1px;
+  background-color: white;
+  opacity: 0.5; /* Optional: makes the line less prominent */
 }
-.button:hover {
-  transform: scale(120%);
-}
-.button:disabled {
-  background-color: rgb(170, 164, 164);
-}
-/* .button.active {
+
+/* .button:active {
   border: 1px solid var(--text-main-color);
   background-color: var(--text-main-color);
 } */
+.button:hover {
+  transform: scale(120%);
+}
+
+.split__wrapper {
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size: 1.2rem;
+padding: 10px;
+color: white;
+}
+
 @media only screen and (max-device-width: 1280px) {
   * {
     font-size: 0.9em;
